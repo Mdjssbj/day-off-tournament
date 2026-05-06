@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Day Off Tournament</title>
+<title>DAY OFF</title>
 
 <style>
 
@@ -17,11 +17,11 @@ font-family:Arial,sans-serif;
 body{
 background:#071226;
 color:white;
-padding:18px;
+padding:16px;
 }
 
 .wrap{
-max-width:1450px;
+max-width:1400px;
 margin:auto;
 }
 
@@ -29,13 +29,13 @@ margin:auto;
 display:flex;
 justify-content:space-between;
 align-items:center;
-margin-bottom:24px;
+margin-bottom:22px;
+gap:16px;
 flex-wrap:wrap;
-gap:18px;
 }
 
-h1{
-font-size:40px;
+.title{
+font-size:34px;
 font-weight:900;
 background:linear-gradient(90deg,#18f7a0,#44a4ff);
 -webkit-background-clip:text;
@@ -43,72 +43,68 @@ background:linear-gradient(90deg,#18f7a0,#44a4ff);
 }
 
 .sub{
-color:#97afe4;
-font-size:15px;
-margin-top:6px;
+font-size:14px;
+color:#8fa9de;
+margin-top:4px;
 }
 
 .tgBtn{
-padding:12px 22px;
+padding:12px 20px;
 border-radius:14px;
 background:linear-gradient(90deg,#4d8dff,#3974ff);
 color:white;
 text-decoration:none;
-font-size:15px;
+font-size:14px;
 font-weight:700;
 }
 
 .card{
 background:#0b1733;
-padding:22px;
 border-radius:24px;
-margin-bottom:20px;
+padding:20px;
+margin-bottom:18px;
 }
 
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:16px;
+gap:14px;
 }
 
 .label{
-font-size:14px;
-color:#9fb7ec;
+font-size:13px;
+color:#9eb7ea;
 margin-bottom:6px;
 }
 
 input{
 width:100%;
-padding:16px;
+padding:15px;
 border:none;
 outline:none;
-border-radius:16px;
-background:#1d2d55;
+border-radius:14px;
+background:#1c2b53;
 color:white;
-font-size:16px;
+font-size:15px;
 }
 
 button{
-padding:16px;
+width:100%;
+padding:15px;
 border:none;
-border-radius:16px;
-font-size:16px;
-font-weight:800;
+border-radius:14px;
+font-size:15px;
+font-weight:700;
 cursor:pointer;
 transition:.2s;
 }
 
 button:hover{
-transform:scale(1.02);
+transform:scale(1.01);
 }
 
 .mainBtn{
 background:linear-gradient(90deg,#2f72ff,#8b2dff);
-color:white;
-}
-
-.redBtn{
-background:#ff5267;
 color:white;
 }
 
@@ -117,11 +113,16 @@ background:#31446f;
 color:white;
 }
 
+.redBtn{
+background:#ff5368;
+color:white;
+}
+
 .stats{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:18px;
-margin-top:20px;
+gap:14px;
+margin-bottom:18px;
 }
 
 .stat{
@@ -132,14 +133,14 @@ text-align:center;
 }
 
 .big{
-font-size:36px;
+font-size:34px;
 font-weight:900;
 margin-bottom:8px;
 }
 
 .small{
-font-size:14px;
-color:#9db6ea;
+font-size:13px;
+color:#9eb6ea;
 }
 
 .tableWrap{
@@ -149,18 +150,19 @@ overflow:auto;
 table{
 width:100%;
 border-collapse:collapse;
-min-width:850px;
+min-width:800px;
 }
 
 th,td{
-padding:14px;
+padding:12px;
 text-align:center;
-border-bottom:1px solid rgba(255,255,255,.08);
-font-size:14px;
+border-bottom:1px solid rgba(255,255,255,.06);
+font-size:13px;
 }
 
 th{
-color:#8eb7ff;
+color:#8db6ff;
+font-weight:700;
 }
 
 .green{
@@ -174,19 +176,19 @@ font-weight:700;
 }
 
 .chart{
-height:240px;
-background:#091327;
-border-radius:22px;
-padding:18px;
+height:180px;
 display:flex;
 align-items:flex-end;
-gap:10px;
+gap:8px;
+padding:18px;
 overflow-x:auto;
+background:#091327;
+border-radius:22px;
 }
 
 .bar{
-min-width:48px;
-border-radius:12px 12px 0 0;
+min-width:38px;
+border-radius:10px 10px 0 0;
 position:relative;
 }
 
@@ -200,32 +202,30 @@ background:linear-gradient(180deg,#ff6678,#ff2f55);
 
 .bar span{
 position:absolute;
-bottom:-26px;
+bottom:-22px;
 left:50%;
 transform:translateX(-50%);
-font-size:11px;
-color:#9eb6ea;
+font-size:10px;
+color:#98b3e8;
+}
+
+.section{
+font-size:18px;
+font-weight:700;
+margin-bottom:16px;
 }
 
 .footer{
+margin-top:14px;
 text-align:center;
-margin-top:16px;
-font-size:14px;
-color:#8ea6db;
+font-size:13px;
+color:#8ca5da;
 }
 
 @media(max-width:768px){
 
-body{
-padding:12px;
-}
-
-h1{
-font-size:30px;
-}
-
-.sub{
-font-size:13px;
+.title{
+font-size:28px;
 }
 
 .big{
@@ -233,7 +233,7 @@ font-size:28px;
 }
 
 input,button{
-font-size:15px;
+font-size:14px;
 padding:14px;
 }
 
@@ -254,11 +254,12 @@ padding:10px;
 <div class="top">
 
 <div>
-<h1>DAY OFF TOURNAMENT</h1>
+<div class="title">DAY OFF</div>
 <div class="sub">Турнірна система трейдера</div>
 </div>
 
-<a href="https://t.me/+JxZLoij59XBmNTBi"
+<a
+href="https://t.me/+JxZLoij59XBmNTBi"
 target="_blank"
 class="tgBtn">
 Telegram
@@ -285,17 +286,23 @@ Telegram
 <input id="strategy" placeholder="Впиши стратегію">
 </div>
 
+<div style="display:flex;align-items:end;">
 <button class="mainBtn" onclick="addDay()">
 Додати день
 </button>
+</div>
 
+<div style="display:flex;align-items:end;">
 <button class="grayBtn" onclick="exportCSV()">
-Export CSV
+Експорт CSV
 </button>
+</div>
 
+<div style="display:flex;align-items:end;">
 <button class="redBtn" onclick="resetAll()">
 Очистити
 </button>
+</div>
 
 </div>
 
@@ -323,18 +330,13 @@ Export CSV
 <div class="small">Серія перемог</div>
 </div>
 
-<div class="stat">
-<div class="big" id="scoreBox">0</div>
-<div class="small">Турнірні очки</div>
-</div>
-
 </div>
 
 <div class="card">
 
-<h2 style="margin-bottom:18px;">
+<div class="section">
 Результати днів
-</h2>
+</div>
 
 <div class="chart" id="chart"></div>
 
@@ -342,9 +344,9 @@ Export CSV
 
 <div class="card">
 
-<h2 style="margin-bottom:18px;">
+<div class="section">
 Історія днів
-</h2>
+</div>
 
 <div class="tableWrap">
 
@@ -380,7 +382,7 @@ Day Off
 
 let historyData =
 JSON.parse(
-localStorage.getItem("dayOffTournamentV7")
+localStorage.getItem("dayOffTournamentV8")
 || "[]"
 );
 
@@ -388,13 +390,14 @@ let totalPNL = 0;
 let roi = 0;
 let wr = 0;
 let streak = 0;
-let score = 0;
 
 function addDay(){
 
-let d = document.getElementById("date").value;
+let d =
+document.getElementById("date").value;
 
-let r = Number(
+let r =
+Number(
 document.getElementById("result").value
 );
 
@@ -472,14 +475,10 @@ wr =
 }else{
 
 roi = 0;
+
 wr = 0;
 
 }
-
-score =
-totalPNL*0.6 +
-roi*0.3 +
-wr*0.1;
 
 }
 
@@ -500,10 +499,6 @@ wr.toFixed(1)+"%";
 document.getElementById("streakBox")
 .innerText =
 streak;
-
-document.getElementById("scoreBox")
-.innerText =
-score.toFixed(1);
 
 }
 
@@ -585,7 +580,7 @@ renderChart();
 function saveAll(){
 
 localStorage.setItem(
-"dayOffTournamentV7",
+"dayOffTournamentV8",
 JSON.stringify(historyData)
 );
 
@@ -596,7 +591,7 @@ function resetAll(){
 if(confirm("Очистити всі дані?")){
 
 localStorage.removeItem(
-"dayOffTournamentV7"
+"dayOffTournamentV8"
 );
 
 location.reload();
@@ -607,39 +602,45 @@ location.reload();
 
 function exportCSV(){
 
-let rows =
-"Дата;Результат;Баланс дня;Стратегія\\r\\n";
+let rows = [
+["Дата","Результат","Баланс дня","Стратегія"]
+];
 
 for(let i=0;i<historyData.length;i++){
 
-rows +=
-`${historyData[i].date};${historyData[i].result};${historyData[i].dayBalance};${historyData[i].strategy}\\r\\n`;
+rows.push([
+historyData[i].date,
+historyData[i].result,
+historyData[i].dayBalance,
+historyData[i].strategy
+]);
 
 }
 
-let csv = "\\uFEFF"+rows;
+let csvContent =
+rows.map(e => e.join(";")).join("\\n");
 
 let blob = new Blob(
-[csv],
+[csvContent],
 {
 type:"text/csv;charset=utf-8;"
 }
 );
 
-let a =
+let link =
 document.createElement("a");
 
-a.href =
+link.href =
 URL.createObjectURL(blob);
 
-a.download =
+link.download =
 "dayoff-results.csv";
 
-document.body.appendChild(a);
+document.body.appendChild(link);
 
-a.click();
+link.click();
 
-document.body.removeChild(a);
+document.body.removeChild(link);
 
 }
 
