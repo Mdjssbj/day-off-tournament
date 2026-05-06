@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Day Off Tournament - Ranking System</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+background:#071226;
+color:#fff;
+padding:24px;
+}
+
+.wrap{
+max-width:1500px;
+margin:auto;
+}
+
+.topBar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:25px;
+gap:20px;
+flex-wrap:wrap;
+}
+
+h1{
+font-size:54px;
+font-weight:900;
+background:linear-gradient(90deg,#16f5a3,#3da2ff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.infoBox{
+display:flex;
+gap:14px;
+flex-wrap:wrap;
+}
+
+.infoCard{
+background:#0d1835;
+padding:16px 22px;
+border-radius:18px;
+min-width:180px;
+}
+
+.infoTitle{
+font-size:14px;
+color:#91a8dc;
+margin-bottom:6px;
+}
+
+.infoValue{
+font-size:28px;
+font-weight:800;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:16px;
+margin-bottom:24px;
+}
+
+.card{
+background:#0b1733;
+border-radius:24px;
+padding:24px;
+}
+
+.sectionTitle{
+font-size:30px;
+font-weight:800;
+margin-bottom:18px;
+color:#fff;
+}
+
+input{
+width:100%;
+padding:18px;
+border:none;
+outline:none;
+border-radius:16px;
+background:#1b2a50;
+color:#fff;
+font-size:18px;
+}
+
+button{
+padding:18px;
+border:none;
+border-radius:16px;
+font-size:18px;
+font-weight:800;
+cursor:pointer;
+transition:.2s;
+}
+
+button:hover{
+transform:scale(1.02);
+}
+
+.mainBtn{
+background:linear-gradient(90deg,#2d75ff,#8a2dff);
+color:#fff;
+}
+
+.grayBtn{
+background:#31446f;
+color:#fff;
+}
+
+.redBtn{
+background:#ff4e67;
+color:#fff;
+}
+
+.tableWrap{
+overflow:auto;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+min-width:1000px;
+}
+
+th,td{
+padding:14px;
+text-align:center;
+border-bottom:1px solid rgba(255,255,255,.07);
+font-size:17px;
+}
+
+th{
+color:#8fb6ff;
+}
+
+.me{
+background:rgba(44,120,255,.15);
+}
+
+.green{
+color:#18f7a0;
+font-weight:700;
+}
+
+.red{
+color:#ff6070;
+font-weight:700;
+}
+
+.statGrid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:18px;
+margin-top:24px;
+}
+
+.statCard{
+background:#091327;
+padding:26px;
+border-radius:22px;
+text-align:center;
+}
+
+.big{
+font-size:46px;
+font-weight:900;
+margin-bottom:10px;
+}
+
+.chart{
+height:240px;
+background:#091327;
+border-radius:22px;
+padding:20px;
+display:flex;
+align-items:flex-end;
+gap:10px;
+margin-top:20px;
+overflow-x:auto;
+}
+
+.bar{
+min-width:40px;
+background:linear-gradient(180deg,#18f7a0,#2e72ff);
+border-radius:12px 12px 0 0;
+position:relative;
+}
+
+.bar span{
+position:absolute;
+bottom:-28px;
+left:50%;
+transform:translateX(-50%);
+font-size:12px;
+color:#9cb5eb;
+}
+
+.footer{
+text-align:center;
+margin-top:28px;
+color:#8ea7da;
+font-size:16px;
+}
+
+@media(max-width:768px){
+
+body{
+padding:16px;
+}
+
+h1{
+font-size:34px;
+}
+
+.sectionTitle{
+font-size:24px;
+}
+
+.big{
+font-size:34px;
+}
+
+.infoValue{
+font-size:22px;
+}
+
+th,td{
+font-size:14px;
+padding:10px;
+}
+
+}
+</style>
+</head>
+
+<body>
+
+<div class="wrap">
+
+<div class="topBar">
+
+<div>
+<h1>DAY OFF TOURNAMENT</h1>
+<div style="color:#93aee3;font-size:18px;margin-top:6px;">
+Ranking System
+</div>
+</div>
+
+<div class="infoBox">
+
+<div class="infoCard">
+<div class="infoTitle">Prize Pool</div>
+<div class="infoValue">12,500 UAH</div>
+</div>
+
+<div class="infoCard">
+<div class="infoTitle">Entry</div>
+<div class="infoValue">FREE</div>
+</div>
+
+<div class="infoCard">
+<div class="infoTitle">Start Balance</div>
+<div class="infoValue">100</div>
+</div>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="sectionTitle">Add Trading Day</div>
+
+<div class="grid">
+
+<input id="date" type="date">
+
+<input id="result" placeholder="+25 або -15">
+
+<input id="note" placeholder="Примітка (опціонально)">
+
+<button class="mainBtn" onclick="addDay()">Add Day</button>
+
+<button class="grayBtn" onclick="exportCSV()">Export CSV</button>
+
+<button class="redBtn" onclick="resetAll()">Reset</button>
+
+</div>
+
+</div>
+
+<div class="card" style="margin-top:22px;">
+
+<div class="sectionTitle">Leaderboard</div>
+
+<div class="tableWrap">
+<table>
+<thead>
+<tr>
+<th>Rank</th>
+<th>Name</th>
+<th>Balance</th>
+<th>ROI</th>
+<th>Winrate</th>
+<th>Score</th>
+</tr>
+</thead>
+
+<tbody id="leaderRows"></tbody>
+
+</table>
+</div>
+
+</div>
+
+<div class="statGrid">
+
+<div class="statCard">
+<div class="big" id="rankBox">#0</div>
+<div>Current Rank</div>
+</div>
+
+<div class="statCard">
+<div class="big" id="scoreBox">0</div>
+<div>Score</div>
+</div>
+
+<div class="statCard">
+<div class="big" id="roiBox">0%</div>
+<div>ROI</div>
+</div>
+
+<div class="statCard">
+<div class="big" id="wrBox">0%</div>
+<div>Winrate</div>
+</div>
+
+<div class="statCard">
+<div class="big" id="balanceBox">100</div>
+<div>Balance</div>
+</div>
+
+<div class="statCard">
+<div class="big" id="streakBox">0</div>
+<div>Win Streak</div>
+</div>
+
+</div>
+
+<div class="card" style="margin-top:22px;">
+
+<div class="sectionTitle">Balance Growth</div>
+
+<div class="chart" id="chart"></div>
+
+</div>
+
+<div class="card" style="margin-top:22px;">
+
+<div class="sectionTitle">Trading History</div>
+
+<div class="tableWrap">
+
+<table>
+
+<thead>
+<tr>
+<th>#</th>
+<th>Date</th>
+<th>Result</th>
+<th>Balance</th>
+<th>Rank</th>
+<th>Note</th>
+</tr>
+</thead>
+
+<tbody id="historyRows"></tbody>
+
+</table>
+
+</div>
+
+</div>
+
+<div class="footer">
+Day Off Tournament • Trading Ranking Dashboard
+</div>
+
+</div>
+
+<script>
+
+let historyData = [];
+let balance = 100;
+let roi = 0;
+let winrate = 0;
+let score = 0;
+let rank = 0;
+let streak = 0;
+
+let fakePlayers = [];
+
+function generatePlayers(){
+
+fakePlayers = [];
+
+let names = [
+"Trader A",
+"Trader B",
+"Trader C",
+"Trader D",
+"Trader E",
+"Trader F",
+"Trader G",
+"Trader H"
+];
+
+for(let i=0;i<names.length;i++){
+
+let b = Math.floor(Math.random()*250)+50;
+let r = ((b-100)/100*100);
+let w = Math.floor(Math.random()*45)+40;
+
+let s =
+b*0.6+
+r*0.3+
+w*0.1;
+
+fakePlayers.push({
+name:names[i],
+balance:b,
+roi:r,
+winrate:w,
+score:s
+});
+
+}
+
+}
+
+function addDay(){
+
+let d = date.value;
+let r = Number(result.value);
+let n = note.value;
+
+if(!d || isNaN(r)) return;
+
+balance += r;
+
+let wins = 0;
+
+for(let i=0;i<historyData.length;i++){
+if(historyData[i].result>0) wins++;
+}
+
+if(r>0){
+wins++;
+streak++;
+}else{
+streak=0;
+}
+
+let total = historyData.length+1;
+
+roi = ((balance-100)/100*100);
+
+winrate = (wins/total)*100;
+
+score =
+balance*0.6+
+roi*0.3+
+winrate*0.1;
+
+historyData.push({
+date:d,
+result:r,
+balance:balance,
+note:n,
+rank:0
+});
+
+calculateRank();
+
+historyData[historyData.length-1].rank=rank;
+
+renderAll();
+saveAll();
+
+result.value="";
+note.value="";
+}
+
+function calculateRank(){
+
+let all = [...fakePlayers];
+
+all.push({
+name:"YOU",
+balance:balance,
+roi:roi,
+winrate:winrate,
+score:score,
+me:true
+});
+
+all.sort((a,b)=>b.score-a.score);
+
+for(let i=0;i<all.length;i++){
+
+if(all[i].me){
+rank=i+1;
+}
+
+}
+
+window.players = all;
+}
+
+function renderLeaderboard(){
+
+let html="";
+
+for(let i=0;i<players.length;i++){
+
+html+=`
+<tr class="${players[i].me?'me':''}">
+<td>#${i+1}</td>
+<td>${players[i].name}</td>
+<td>${players[i].balance.toFixed(0)}</td>
+<td>${players[i].roi.toFixed(1)}%</td>
+<td>${players[i].winrate.toFixed(1)}%</td>
+<td>${players[i].score.toFixed(1)}</td>
+</tr>
+`;
+
+}
+
+leaderRows.innerHTML=html;
+}
+
+function renderHistory(){
+
+let html="";
+
+for(let i=0;i<historyData.length;i++){
+
+html+=`
+<tr>
+<td>${i+1}</td>
+<td>${historyData[i].date}</td>
+<td class="${historyData[i].result>=0?'green':'red'}">
+${historyData[i].result>=0?'+':''}${historyData[i].result}
+</td>
+<td>${historyData[i].balance.toFixed(0)}</td>
+<td>#${historyData[i].rank}</td>
+<td>${historyData[i].note||'-'}</td>
+</tr>
+`;
+
+}
+
+historyRows.innerHTML=html;
+}
+
+function renderStats(){
+
+rankBox.innerText="#"+rank;
+scoreBox.innerText=score.toFixed(1);
+roiBox.innerText=roi.toFixed(1)+"%";
+wrBox.innerText=winrate.toFixed(1)+"%";
+balanceBox.innerText=balance.toFixed(0);
+streakBox.innerText=streak;
+}
+
+function renderChart(){
+
+let html="";
+
+for(let i=0;i<historyData.length;i++){
+
+let h = Math.max(historyData[i].balance,20);
+
+html+=`
+<div class="bar" style="height:${h}px">
+<span>${i+1}</span>
+</div>
+`;
+
+}
+
+chart.innerHTML=html;
+}
+
+function renderAll(){
+
+renderLeaderboard();
+renderHistory();
+renderStats();
+renderChart();
+
+}
+
+function saveAll(){
+
+localStorage.setItem("dayOffTournamentV2",JSON.stringify({
+historyData,
+balance,
+roi,
+winrate,
+score,
+rank,
+streak,
+fakePlayers
+}));
+
+}
+
+function loadAll(){
+
+let d = JSON.parse(localStorage.getItem("dayOffTournamentV2") || "{}");
+
+historyData = d.historyData || [];
+balance = d.balance || 100;
+roi = d.roi || 0;
+winrate = d.winrate || 0;
+score = d.score || 0;
+rank = d.rank || 0;
+streak = d.streak || 0;
+fakePlayers = d.fakePlayers || [];
+
+if(fakePlayers.length===0){
+generatePlayers();
+}
+
+calculateRank();
+renderAll();
+
+}
+
+function resetAll(){
+
+if(confirm("Reset tournament?")){
+
+localStorage.removeItem("dayOffTournamentV2");
+
+location.reload();
+
+}
+
+}
+
+function exportCSV(){
+
+let rows="Date;Result;Balance;Rank;Note\r\n";
+
+for(let i=0;i<historyData.length;i++){
+
+rows +=
+`${historyData[i].date};${historyData[i].result};${historyData[i].balance};${historyData[i].rank};${historyData[i].note}\r\n`;
+
+}
+
+let csv="\uFEFF"+rows;
+
+let blob = new Blob([csv],{
+type:"text/csv;charset=utf-8;"
+});
+
+let a=document.createElement("a");
+
+a.href=URL.createObjectURL(blob);
+
+a.download="dayoff-history.csv";
+
+document.body.appendChild(a);
+
+a.click();
+
+document.body.removeChild(a);
+
+}
+
+generatePlayers();
+loadAll();
+
+</script>
+
+</body>
+</html>
