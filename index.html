@@ -299,7 +299,7 @@ Telegram
 
 <div style="display:flex;align-items:end;">
 <button class="grayBtn" onclick="exportCSV()">
-Експорт CSV
+Експорт Excel
 </button>
 </div>
 
@@ -321,8 +321,8 @@ Telegram
 </div>
 
 <div class="stat">
-<div class="big" id="roiBox">0%</div>
-<div class="small">ROI</div>
+<div class="big" id="avgBox">0</div>
+<div class="small">Середній результат</div>
 </div>
 
 <div class="stat">
@@ -388,12 +388,12 @@ Day Off
 
 let historyData =
 JSON.parse(
-localStorage.getItem("dayOffTournamentV9")
+localStorage.getItem("dayOffTournamentV10")
 || "[]"
 );
 
 let totalPNL = 0;
-let roi = 0;
+let avg = 0;
 let wr = 0;
 let streak = 0;
 
@@ -475,21 +475,13 @@ bestStreak = currentStreak;
 
 streak = bestStreak;
 
-if(historyData.length>0){
-
-roi =
-(totalPNL/(historyData.length*100))*100;
+avg =
+historyData.length ?
+(totalPNL/historyData.length) : 0;
 
 wr =
-(wins/historyData.length)*100;
-
-}else{
-
-roi = 0;
-
-wr = 0;
-
-}
+historyData.length ?
+(wins/historyData.length)*100 : 0;
 
 }
 
@@ -499,9 +491,9 @@ document.getElementById("pnlBox")
 .innerText =
 totalPNL.toFixed(0);
 
-document.getElementById("roiBox")
+document.getElementById("avgBox")
 .innerText =
-roi.toFixed(1)+"%";
+avg.toFixed(1);
 
 document.getElementById("wrBox")
 .innerText =
@@ -593,7 +585,7 @@ renderChart();
 function saveAll(){
 
 localStorage.setItem(
-"dayOffTournamentV9",
+"dayOffTournamentV10",
 JSON.stringify(historyData)
 );
 
@@ -604,7 +596,7 @@ function resetAll(){
 if(confirm("Очистити всі дані?")){
 
 localStorage.removeItem(
-"dayOffTournamentV9"
+"dayOffTournamentV10"
 );
 
 location.reload();
@@ -615,29 +607,52 @@ location.reload();
 
 function exportCSV(){
 
-let rows = [
-["Дата","Результат","Баланс дня","Стратегія","Висновок"]
-];
+let table = `
+<table border="1">
+<tr>
+<th>Дата</th>
+<th>Результат</th>
+<th>Баланс дня</th>
+<th>Стратегія</th>
+<th>Висновок</th>
+</tr>
+`;
 
 for(let i=0;i<historyData.length;i++){
 
-rows.push([
-historyData[i].date,
-historyData[i].result,
-historyData[i].dayBalance,
-historyData[i].strategy,
-historyData[i].note
-]);
+table += `
+<tr>
+<td>${historyData[i].date}</td>
+<td>${historyData[i].result}</td>
+<td>${historyData[i].dayBalance}</td>
+<td>${historyData[i].strategy}</td>
+<td>${historyData[i].note}</td>
+</tr>
+`;
 
 }
 
-let csvContent =
-rows.map(e => e.join(";")).join("\n");
+table += `</table>`;
+
+let html = `
+<html xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:x="urn:schemas-microsoft-com:office:excel"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta charset="UTF-8">
+</head>
+
+<body>
+${table}
+</body>
+</html>
+`;
 
 let blob = new Blob(
-[csvContent],
+[html],
 {
-type:"text/csv;charset=utf-8;"
+type:"application/vnd.ms-excel"
 }
 );
 
@@ -648,7 +663,7 @@ link.href =
 URL.createObjectURL(blob);
 
 link.download =
-"dayoff-results.csv";
+"dayoff-results.xls";
 
 document.body.appendChild(link);
 
