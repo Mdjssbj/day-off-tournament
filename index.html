@@ -321,12 +321,6 @@ Telegram
 <div class="stat">
 <div class="big" id="scoreBox">0</div>
 <div class="small">Турнірні очки</div>
-</div>
-
-<div class="stat">
-<div class="big" id="rankBox">Bronze</div>
-<div class="small">Ранг</div>
-</div>
 
 </div>
 
@@ -447,18 +441,6 @@ totalPNL * 0.6 +
 roi * 0.3 +
 wr * 0.1;
 
-}
-
-function getRank(){
-
-if(score >= 500) return "Diamond";
-if(score >= 350) return "Platinum";
-if(score >= 250) return "Gold";
-if(score >= 120) return "Silver";
-
-return "Bronze";
-
-}
 
 function renderStats(){
 
@@ -471,10 +453,6 @@ wrBox.innerText = wr.toFixed(1)+"%";
 streakBox.innerText = streak;
 
 scoreBox.innerText = score.toFixed(1);
-
-rankBox.innerText = getRank();
-
-}
 
 function renderHistory(){
 
