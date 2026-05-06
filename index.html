@@ -15,8 +15,8 @@ font-family:Arial,sans-serif;
 
 body{
 background:#071226;
-color:#fff;
-padding:20px;
+color:white;
+padding:18px;
 }
 
 .wrap{
@@ -28,44 +28,40 @@ margin:auto;
 display:flex;
 justify-content:space-between;
 align-items:center;
-margin-bottom:25px;
+margin-bottom:24px;
 flex-wrap:wrap;
-gap:20px;
-position:relative;
+gap:18px;
 }
 
 h1{
-font-size:42px;
+font-size:40px;
 font-weight:900;
-background:linear-gradient(90deg,#19f7a0,#44a4ff);
+background:linear-gradient(90deg,#18f7a0,#44a4ff);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
 }
 
 .sub{
 color:#97afe4;
-margin-top:8px;
-font-size:16px;
+font-size:15px;
+margin-top:6px;
 }
 
 .tgBtn{
-position:absolute;
-top:0;
-right:0;
 padding:12px 22px;
 border-radius:14px;
 background:linear-gradient(90deg,#4d8dff,#3974ff);
 color:white;
 text-decoration:none;
-font-size:16px;
+font-size:15px;
 font-weight:700;
 }
 
 .card{
 background:#0b1733;
-padding:24px;
+padding:22px;
 border-radius:24px;
-margin-bottom:22px;
+margin-bottom:20px;
 }
 
 .grid{
@@ -80,7 +76,7 @@ color:#9fb7ec;
 margin-bottom:6px;
 }
 
-input,select{
+input{
 width:100%;
 padding:16px;
 border:none;
@@ -88,14 +84,14 @@ outline:none;
 border-radius:16px;
 background:#1d2d55;
 color:white;
-font-size:17px;
+font-size:16px;
 }
 
 button{
 padding:16px;
 border:none;
 border-radius:16px;
-font-size:17px;
+font-size:16px;
 font-weight:800;
 cursor:pointer;
 transition:.2s;
@@ -124,25 +120,25 @@ color:white;
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
 gap:18px;
-margin-top:22px;
+margin-top:20px;
 }
 
 .stat{
 background:#091327;
-padding:24px;
+padding:22px;
 border-radius:22px;
 text-align:center;
 }
 
 .big{
-font-size:38px;
+font-size:36px;
 font-weight:900;
 margin-bottom:8px;
 }
 
 .small{
-color:#9eb6e8;
-font-size:15px;
+font-size:14px;
+color:#9db6ea;
 }
 
 .tableWrap{
@@ -152,18 +148,18 @@ overflow:auto;
 table{
 width:100%;
 border-collapse:collapse;
-min-width:1000px;
+min-width:900px;
 }
 
 th,td{
 padding:14px;
 text-align:center;
 border-bottom:1px solid rgba(255,255,255,.08);
-font-size:15px;
+font-size:14px;
 }
 
 th{
-color:#8fb6ff;
+color:#8eb7ff;
 }
 
 .green{
@@ -172,7 +168,7 @@ font-weight:700;
 }
 
 .red{
-color:#ff6475;
+color:#ff6678;
 font-weight:700;
 }
 
@@ -180,41 +176,47 @@ font-weight:700;
 height:240px;
 background:#091327;
 border-radius:22px;
+padding:18px;
 display:flex;
 align-items:flex-end;
 gap:10px;
-padding:20px;
 overflow-x:auto;
-margin-top:20px;
 }
 
 .bar{
-min-width:42px;
-background:linear-gradient(180deg,#18f7a0,#2f72ff);
-border-radius:10px 10px 0 0;
+min-width:48px;
+border-radius:12px 12px 0 0;
 position:relative;
+}
+
+.bar.greenBar{
+background:linear-gradient(180deg,#18f7a0,#2f72ff);
+}
+
+.bar.redBar{
+background:linear-gradient(180deg,#ff6678,#ff2f55);
 }
 
 .bar span{
 position:absolute;
-bottom:-24px;
+bottom:-26px;
 left:50%;
 transform:translateX(-50%);
 font-size:11px;
-color:#9db7ec;
+color:#9eb6ea;
 }
 
 .footer{
 text-align:center;
-margin-top:18px;
-color:#8fa7db;
+margin-top:16px;
 font-size:14px;
+color:#8ea6db;
 }
 
 @media(max-width:768px){
 
 body{
-padding:14px;
+padding:12px;
 }
 
 h1{
@@ -222,28 +224,20 @@ font-size:30px;
 }
 
 .sub{
-font-size:14px;
-}
-
-.tgBtn{
-position:relative;
-top:auto;
-right:auto;
-font-size:14px;
-padding:10px 16px;
+font-size:13px;
 }
 
 .big{
-font-size:30px;
+font-size:28px;
 }
 
-input,select,button{
+input,button{
 font-size:15px;
 padding:14px;
 }
 
 th,td{
-font-size:13px;
+font-size:12px;
 padding:10px;
 }
 
@@ -279,22 +273,12 @@ Telegram
 
 <div>
 <div class="label">💰 Результат дня</div>
-<input id="result" placeholder="+25 або -15">
+<input id="result" placeholder="+20 або -15">
 </div>
 
 <div>
 <div class="label">🧠 Стратегія</div>
 <input id="strategy" placeholder="Впиши стратегію">
-</div>
-
-<div>
-<div class="label">🌍 Сесія</div>
-<select id="session">
-<option value="">Обрати</option>
-<option>Лондон</option>
-<option>Нью-Йорк</option>
-<option>Азія</option>
-</select>
 </div>
 
 <div>
@@ -315,8 +299,8 @@ Telegram
 <div class="stats">
 
 <div class="stat">
-<div class="big" id="balanceBox">100</div>
-<div class="small">Баланс</div>
+<div class="big" id="pnlBox">0</div>
+<div class="small">Загальний PNL</div>
 </div>
 
 <div class="stat">
@@ -326,7 +310,7 @@ Telegram
 
 <div class="stat">
 <div class="big" id="wrBox">0%</div>
-<div class="small">Winrate</div>
+<div class="small">Відсоток перемог</div>
 </div>
 
 <div class="stat">
@@ -336,7 +320,7 @@ Telegram
 
 <div class="stat">
 <div class="big" id="scoreBox">0</div>
-<div class="small">Tournament Score</div>
+<div class="small">Турнірні очки</div>
 </div>
 
 <div class="stat">
@@ -348,7 +332,7 @@ Telegram
 
 <div class="card">
 
-<h2 style="margin-bottom:18px;">Графік балансу</h2>
+<h2 style="margin-bottom:18px;">Результати днів</h2>
 
 <div class="chart" id="chart"></div>
 
@@ -367,9 +351,8 @@ Telegram
 <th>#</th>
 <th>Дата</th>
 <th>Результат</th>
-<th>Баланс</th>
+<th>Баланс дня</th>
 <th>Стратегія</th>
-<th>Сесія</th>
 <th>Нотатка</th>
 </tr>
 </thead>
@@ -390,9 +373,9 @@ Day Off
 
 <script>
 
-let historyData = JSON.parse(localStorage.getItem("dayOffTournamentV4") || "[]");
+let historyData = JSON.parse(localStorage.getItem("dayOffTournamentV5") || "[]");
 
-let balance = 100;
+let totalPNL = 0;
 let roi = 0;
 let wr = 0;
 let streak = 0;
@@ -404,15 +387,12 @@ let item = {
 date:date.value,
 result:Number(result.value),
 strategy:strategy.value,
-session:session.value,
 note:note.value
 };
 
-if(!item.date || isNaN(item.result) || !item.strategy || !item.session) return;
+if(!item.date || isNaN(item.result) || !item.strategy) return;
 
-balance += item.result;
-
-item.balance = balance;
+item.dayBalance = 100 + item.result;
 
 historyData.push(item);
 
@@ -422,13 +402,12 @@ saveAll();
 
 result.value="";
 strategy.value="";
-session.value="";
 note.value="";
 }
 
 function calculateStats(){
 
-balance = 100;
+totalPNL = 0;
 
 let wins = 0;
 let currentStreak = 0;
@@ -436,61 +415,70 @@ let bestStreak = 0;
 
 for(let i=0;i<historyData.length;i++){
 
-balance += historyData[i].result;
-
-historyData[i].balance = balance;
+totalPNL += historyData[i].result;
 
 if(historyData[i].result > 0){
+
 wins++;
 currentStreak++;
+
 }else{
-currentStreak=0;
+
+currentStreak = 0;
+
 }
 
-if(currentStreak>bestStreak){
-bestStreak=currentStreak;
+if(currentStreak > bestStreak){
+bestStreak = currentStreak;
 }
 
 }
 
 streak = bestStreak;
 
-roi = ((balance-100)/100)*100;
+roi = historyData.length ?
+(totalPNL / (historyData.length * 100)) * 100 : 0;
 
 wr = historyData.length ?
-(wins/historyData.length)*100 : 0;
+(wins / historyData.length) * 100 : 0;
 
 score =
-balance*0.6 +
-roi*0.3 +
-wr*0.1;
+totalPNL * 0.6 +
+roi * 0.3 +
+wr * 0.1;
 
 }
 
 function getRank(){
 
-if(score>=500) return "Diamond";
-if(score>=350) return "Platinum";
-if(score>=250) return "Gold";
-if(score>=150) return "Silver";
+if(score >= 500) return "Diamond";
+if(score >= 350) return "Platinum";
+if(score >= 250) return "Gold";
+if(score >= 120) return "Silver";
+
 return "Bronze";
 
 }
 
 function renderStats(){
 
-balanceBox.innerText = balance.toFixed(0);
+pnlBox.innerText = totalPNL.toFixed(0);
+
 roiBox.innerText = roi.toFixed(1)+"%";
+
 wrBox.innerText = wr.toFixed(1)+"%";
+
 streakBox.innerText = streak;
+
 scoreBox.innerText = score.toFixed(1);
+
 rankBox.innerText = getRank();
 
 }
 
 function renderHistory(){
 
-let html="";
+let html = "";
 
 for(let i=0;i<historyData.length;i++){
 
@@ -498,15 +486,21 @@ let x = historyData[i];
 
 html += `
 <tr>
+
 <td>${i+1}</td>
+
 <td>${x.date}</td>
+
 <td class="${x.result>=0?'green':'red'}">
 ${x.result>=0?'+':''}${x.result}
 </td>
-<td>${x.balance.toFixed(0)}</td>
+
+<td>${x.dayBalance.toFixed(0)}</td>
+
 <td>${x.strategy}</td>
-<td>${x.session}</td>
+
 <td>${x.note || '-'}</td>
+
 </tr>
 `;
 
@@ -518,15 +512,22 @@ historyRows.innerHTML = html;
 
 function renderChart(){
 
-let html="";
+let html = "";
 
 for(let i=0;i<historyData.length;i++){
 
-let h = Math.max(historyData[i].balance,20);
+let x = historyData[i];
+
+let h = Math.abs(x.result) * 3;
+
+if(h < 20) h = 20;
 
 html += `
-<div class="bar" style="height:${h}px">
+<div class="bar ${x.result>=0?'greenBar':'redBar'}"
+style="height:${h}px">
+
 <span>${i+1}</span>
+
 </div>
 `;
 
@@ -539,15 +540,21 @@ chart.innerHTML = html;
 function renderAll(){
 
 calculateStats();
+
 renderStats();
+
 renderHistory();
+
 renderChart();
 
 }
 
 function saveAll(){
 
-localStorage.setItem("dayOffTournamentV4",JSON.stringify(historyData));
+localStorage.setItem(
+"dayOffTournamentV5",
+JSON.stringify(historyData)
+);
 
 }
 
@@ -555,7 +562,8 @@ function resetAll(){
 
 if(confirm("Очистити всі дані?")){
 
-localStorage.removeItem("dayOffTournamentV4");
+localStorage.removeItem("dayOffTournamentV5");
+
 location.reload();
 
 }
@@ -564,11 +572,13 @@ location.reload();
 
 function exportCSV(){
 
-let rows = "Дата;Результат;Баланс;Стратегія;Сесія;Нотатка\\r\\n";
+let rows =
+"Дата;Результат;Баланс дня;Стратегія;Нотатка\\r\\n";
 
 for(let i=0;i<historyData.length;i++){
 
-rows += `${historyData[i].date};${historyData[i].result};${historyData[i].balance};${historyData[i].strategy};${historyData[i].session};${historyData[i].note}\\r\\n`;
+rows +=
+`${historyData[i].date};${historyData[i].result};${historyData[i].dayBalance};${historyData[i].strategy};${historyData[i].note}\\r\\n`;
 
 }
 
@@ -582,7 +592,7 @@ let a = document.createElement("a");
 
 a.href = URL.createObjectURL(blob);
 
-a.download = "dayoff-tournament.csv";
+a.download = "dayoff-results.csv";
 
 document.body.appendChild(a);
 
